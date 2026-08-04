@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+:root {
+  /* Bulldogging.pro accent, per the build map: steel blue and gold on slate.
+     Unusually for this portfolio the map names both accents, so brand is the
+     gold and brand-2 is the steel blue. */
+  --ink: #0e1319;
+  --ink-raised: #171e28;
+  --ink-panel: #1f2835;
+  --ink-border: #33404f;
+
+  --brand: #d9a441;
+  --brand-deep: #a97a22;
+
+  --brand-2: #6f97bd;
+  --brand-2-hover: #8db3d6;
+
+  --cream: #eef2f7;
+  --muted: #93a1b3;
+  --muted-dim: #63707f;
+}
+
+@theme inline {
+  --color-background: var(--ink);
+  --color-foreground: var(--cream);
+  --color-ink: var(--ink);
+  --color-ink-raised: var(--ink-raised);
+  --color-ink-panel: var(--ink-panel);
+  --color-ink-border: var(--ink-border);
+  --color-brand: var(--brand);
+  --color-brand-deep: var(--brand-deep);
+  --color-brand-2: var(--brand-2);
+  --color-brand-2-hover: var(--brand-2-hover);
+  --color-cream: var(--cream);
+  --color-muted: var(--muted);
+  --color-muted-dim: var(--muted-dim);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--ink);
+  color: var(--cream);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+}
+
+/* Arena backdrop, same approach as the other Rodeo Apps sites. */
+.arena-page {
+  --arena-bg-image: none;
+  position: relative;
+  isolation: isolate;
+  background-color: var(--ink);
+}
+
+.arena-page::before {
+  content: "";
+  position: fixed;
+  inset: -4%;
+  z-index: -2;
+  pointer-events: none;
+  background-image: var(--arena-bg-image);
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px) saturate(0.9) contrast(1.05);
+  opacity: 0.5;
+  transform: scale(1.06);
+}
+
+.arena-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% -10%, rgba(217, 164, 65, 0.13), rgba(14, 19, 25, 0.6) 68%),
+    linear-gradient(160deg, rgba(14, 19, 25, 0.72), rgba(23, 30, 40, 0.9));
+}
+
+.arena-bg-1 {
+  --arena-bg-image: url("/backgrounds/arena-1.jpg");
+}
+
+.arena-bg-2 {
+  --arena-bg-image: url("/backgrounds/arena-2.jpg");
+}
+
+.arena-panel {
+  background: rgba(23, 30, 40, 0.72);
+  border: 1px solid var(--ink-border);
+  border-radius: 18px;
+  backdrop-filter: blur(2px);
+}
+
+/* Long-form prose shared by the rules page and the blog. */
+.prose-arena h2 {
+  color: var(--brand);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-arena h3 {
+  color: var(--brand-2);
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-top: 1.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.prose-arena p {
+  color: #d3dbe6;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.prose-arena ul,
+.prose-arena ol {
+  color: #d3dbe6;
+  line-height: 1.75;
+  margin-bottom: 1rem;
+  padding-left: 1.25rem;
+}
+
+.prose-arena ul {
+  list-style: disc;
+}
+
+.prose-arena ol {
+  list-style: decimal;
+}
+
+.prose-arena li {
+  margin-bottom: 0.35rem;
+}
+
+.prose-arena a {
+  color: var(--brand);
+  text-decoration: underline;
+}
+
+.prose-arena strong {
+  color: var(--cream);
+}
+
+/* Association tag used on the rules page. Loose-steer recovery and hazer
+   interference are the two rules that genuinely vary, so anything that
+   differs is labelled rather than asserted as universal. */
+.assoc-tag {
+  display: inline-block;
+  border: 1px solid var(--ink-border);
+  border-radius: 999px;
+  padding: 0.1rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--brand-2);
+  background: rgba(111, 151, 189, 0.1);
+  vertical-align: middle;
+}
+
+/* Split card used on the landing page for the three-way share — wrestler,
+   hazer, and horse owner. The payoff argument is the thing this app exists
+   to make disappear, so it gets shown rather than described. */
+.share-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+}
+
+.share-cell {
+  border: 1px solid var(--ink-border);
+  border-radius: 12px;
+  background: rgba(23, 30, 40, 0.7);
+  padding: 1rem;
+  text-align: center;
+}
+
+.share-cell .share-value {
+  font-size: 1.6rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--brand);
+}
